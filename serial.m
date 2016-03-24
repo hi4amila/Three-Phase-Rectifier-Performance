@@ -5,7 +5,6 @@ close all;
 fileId = fopen('teraterm.txt','r');
 formatSpecs= '%f %f %f %f';
 size= [4 inf];
-
 data = fscanf(fileId,formatSpecs, size);
 fclose(fileId);
 counter=0;
