@@ -21,11 +21,25 @@ for i= 1:length(data)
         count= count+1;
     end
 end
-
 dataOrg= dataOrg(:,1:count-1);
+
+
+Average_Power=0;
+rms_Power=0;
+for i=1:length(dataOrg)
+    Average_Power=Average_Power+ dataOrg(4,i);
+    rms_Power= rms_Power+ dataOrg(4,i)*dataOrg(4,i);
+end
+
+Average_Power= Average_Power/ length(dataOrg);
+rms_Power = (sqrt(rms_Power))/ length(dataOrg);
+disp(Average_Power);
+disp(rms_Power);
 
 figure;plot(dataOrg(1,:), (dataOrg(2,:)));title('Voltage');xlabel('time(s)');
 figure;plot(dataOrg(1,:), (dataOrg(3,:)));title('Current');xlabel('time(s)');
 figure;plot(dataOrg(1,:), (dataOrg(4,:)));title('Power');xlabel('time(s)');
 
-
+fileid=fopen('result.txt','w');
+fprintf(fileid,'Average_Power- %f \t RMS_Power- %f \n ',Average_Power,rms_Power);
+fclose(fileid);
