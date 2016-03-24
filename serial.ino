@@ -26,8 +26,8 @@ void loop() {
   timer= timer+ 0.005;
   output= analogRead(A0); 
   voltage= output*3.4/1023*2;
-  current= voltage*1000/5;
-  power= voltage*voltage/5;
+  current= voltage*1000/20;
+  power= voltage*voltage/20;
   
   Serial.print(timer);
   Serial.print(" ");
